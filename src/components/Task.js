@@ -1,14 +1,20 @@
 const Task = (props) => {
 
-    const { text, date } = props
+    const {
+        id,
+        text,
+        date,
+        deletefn,
+        changestatusfn
+    } = props;
 
     return (
         <div>
             <p>
                 <strong>{text}</strong> - {date}
             </p>
-            <button onClick={() => console.log("is done")}>done</button>
-            <button onClick={() => console.log("delete")}>delete</button>
+            <button onClick={() => deletefn(id)}>done</button>
+            <button onClick={() => changestatusfn(id)}>delete</button>
         </div>
     );
 }
