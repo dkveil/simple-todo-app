@@ -1,4 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const AddTaskWrapper = styled.div`
+    text-align: center;
+`
 
 const AddTask = (props) => {
 
@@ -39,7 +44,7 @@ const AddTask = (props) => {
     }
 
     return (
-        <div>
+        <AddTaskWrapper>
             <div>
                 <input
                     name="name"
@@ -69,7 +74,7 @@ const AddTask = (props) => {
                 />
             </div>
             <button onClick={handleClick}>Add task</button>
-        </div>
+        </AddTaskWrapper>
     );
 }
 

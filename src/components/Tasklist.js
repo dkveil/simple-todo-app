@@ -1,5 +1,10 @@
 import React from "react";
 import Task from "./Task";
+import styled from "styled-components";
+
+const TaskListWrapper = styled.div`
+    text-align: center;
+`
 
 const Tasklist = (props) => {
 
@@ -27,7 +32,7 @@ const Tasklist = (props) => {
     }
 
     return (
-        <>
+        <TaskListWrapper>
             <div>
                 <h2>Tasks to do ({activeTasks.length}): </h2>
             </div>
@@ -64,7 +69,7 @@ const Tasklist = (props) => {
                     />
                 ))}
             </div>
-        </>
+        </TaskListWrapper>
     );
 };
 
