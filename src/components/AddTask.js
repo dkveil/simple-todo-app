@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const AddTask = () => {
+const AddTask = (props) => {
+
+    const { addfn } = props
 
     const minDate = new Date().toISOString().slice(0, 10);
 
@@ -22,6 +24,18 @@ const AddTask = () => {
                 ...prev,
                 [e.target.name]: e.target.value
             }))
+        }
+    }
+
+    const handleClick = () => {
+        const added = addfn(task)
+
+        if(added){
+            setTask({
+                name: '',
+                important: false,
+                date: new Date().toISOString().slice(0, 10),
+            });
         }
     }
 
@@ -55,6 +69,7 @@ const AddTask = () => {
                     onChange={handleChange}
                 />
             </div>
+            <button onClick={handleClick}>Add task</button>
         </div>
     );
 }
