@@ -28,11 +28,17 @@ function App() {
     ]);
 
     const deleteTask = (id) => {
-        console.log(`delete ${id}`)
+
+        const taskscopy = [...tasks];
+        taskscopy.splice(id, 1)
+        setTasks(taskscopy)
+
     };
 
     const changeStatusTask = (id) => {
-        console.log(`change status ${id}`);
+        const taskscopy = [...tasks]
+        taskscopy[id].active = !taskscopy[id].active;
+        setTasks(taskscopy)
     };
 
     return (

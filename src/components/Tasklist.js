@@ -16,6 +16,7 @@ const Tasklist = (props) => {
                     <Task
                         key={index}
                         id={index}
+                        isactive={item.active}
                         text={item.text}
                         date={item.date}
                         deletefn={deletefn}
