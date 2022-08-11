@@ -1,17 +1,30 @@
 import styled from "styled-components";
 
 const TaskWrapper = styled.div`
-    ${(props) => {
-        if (props.important) {
-            return `
-                color: red;
-            `;
-        } else {
-            return `
-                color: black;
-            `;
+    width: 280px;
+    text-align: left;
+    padding: .1rem 0;
+    p{
+        line-height: 1;
+        strong{
+            ${(props) => {
+                if (props.important) {
+                    return `
+                        color: red;
+                    `;
+                } else {
+                    return `
+                        color: black;
+                    `;
+                }
+            }}
         }
-    }}
+    }
+
+    button{
+        width: 40%;
+        padding: 8px;
+    }
 `;
 
 const Task = (props) => {
@@ -26,7 +39,9 @@ const Task = (props) => {
         deletefn,
         changestatusfn,
         isactive,
-        important } = props;
+        important,
+        done
+    } = props;
 
     if(finishdate){
         finish = new Date(finishdate).toLocaleDateString()
@@ -35,15 +50,15 @@ const Task = (props) => {
     return (
         <TaskWrapper important={important}>
             <p>
-                <strong>{text}</strong> {!finish && `- ${date}`}
+                <strong>{text}{(important && !done)&& ' - important to do!'}</strong>
             </p>
-            {isactive ? "active " : null}
+
+            {!finish && <p>deadline - {date}</p>}
             {isactive ? (
                 <button onClick={() => changestatusfn(id)}>done</button>
             ) : (
-                "is done - "
+                <p>is done - {finish}</p>
             )}
-            {finish && finish}
             <button onClick={() => deletefn(id)}>delete</button>
         </TaskWrapper>
     );

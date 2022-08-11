@@ -4,8 +4,13 @@ import styled from "styled-components";
 
 const TaskListWrapper = styled.div`
     text-align: center;
-    padding: 1rem 0;
+    div{
+        margin: 2rem auto;
 
+    }
+    h2{
+        font-size: 1.2rem;
+    }
     hr{
         margin: 4rem 0;
     }
@@ -40,20 +45,20 @@ const Tasklist = (props) => {
         <TaskListWrapper>
             <div>
                 <h2>Tasks to do ({activeTasks.length}): </h2>
+                {activeTasks.map((task) => (
+                        <Task
+                            key={task.id}
+                            id={task.id}
+                            isactive={task.active}
+                            text={task.text}
+                            date={task.date}
+                            important={task.important}
+                            deletefn={deletefn}
+                            changestatusfn={changestatusfn}
+                        />
+                    )
+                )}
             </div>
-            {activeTasks.map((task) => {
-                return(
-                <Task
-                    key={task.id}
-                    id={task.id}
-                    isactive={task.active}
-                    text={task.text}
-                    date={task.date}
-                    important={task.important}
-                    deletefn={deletefn}
-                    changestatusfn={changestatusfn}
-                />
-            )})}
             <hr />
             <div>
                 <h2>Tasks done ({doneTasks.length}):</h2>
@@ -62,6 +67,7 @@ const Tasklist = (props) => {
                 )}
                 {doneTasks.slice(0, 5).map((task) => (
                     <Task
+                        done={true}
                         key={task.id}
                         id={task.id}
                         isactive={task.active}
