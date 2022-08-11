@@ -29,7 +29,7 @@ const Task = (props) => {
         important } = props;
 
     if(finishdate){
-        finish = new Date(finishdate).toDateString()
+        finish = new Date(finishdate).toLocaleDateString()
     }
 
     return (
