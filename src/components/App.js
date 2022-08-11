@@ -83,6 +83,7 @@ function App() {
             <AddTask
                 addfn={addTask}
             />
+            <hr />
             <Tasklist
                 tasks={tasks}
                 deletefn={deleteTask}

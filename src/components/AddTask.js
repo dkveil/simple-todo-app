@@ -3,7 +3,37 @@ import styled from 'styled-components'
 
 const AddTaskWrapper = styled.div`
     text-align: center;
-`
+    padding: 1.5rem 0;
+    div {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 8px 0;
+        width: 230px;
+        margin: auto;
+        input {
+            padding: 1px 10px;
+            height: 25px;
+            border: 1px solid gray;
+        }
+        input[type="text"] {
+            border-radius: 3px;
+            height: 30px;
+            width: 100%;
+        }
+
+        input[type="date"] {
+            margin-left: 10px;
+            border-radius: 3px;
+        }
+    }
+
+    button{
+        margin: 12px auto;
+        width: 230px;
+        padding: 8px 0;
+    }
+`;
 
 const AddTask = (props) => {
 

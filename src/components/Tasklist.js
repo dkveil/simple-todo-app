@@ -4,6 +4,11 @@ import styled from "styled-components";
 
 const TaskListWrapper = styled.div`
     text-align: center;
+    padding: 1rem 0;
+
+    hr{
+        margin: 4rem 0;
+    }
 `
 
 const Tasklist = (props) => {
