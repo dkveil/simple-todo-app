@@ -5,6 +5,7 @@ import AddTask from "./AddTask";
 function App() {
     const [tasks, setTasks] = React.useState([
         {
+            id: 0,
             text: "first task",
             date: "2022-02-15",
             important: true,
@@ -12,6 +13,7 @@ function App() {
             finishDate: null,
         },
         {
+            id: 1,
             text: "second task",
             date: "2022-02-15",
             important: true,
@@ -19,6 +21,7 @@ function App() {
             finishDate: null,
         },
         {
+            id: 2,
             text: "third task",
             date: "2022-02-15",
             important: true,
@@ -30,14 +33,20 @@ function App() {
     const deleteTask = (id) => {
 
         const taskscopy = [...tasks];
-        taskscopy.splice(id, 1)
+        const index = tasks.findIndex(task => task.id === id)
+        taskscopy.splice(index, 1)
         setTasks(taskscopy)
 
     };
 
     const changeStatusTask = (id) => {
         const taskscopy = [...tasks]
-        taskscopy[id].active = !taskscopy[id].active;
+        taskscopy.forEach(task => {
+            if(task.id === id){
+                task.active = !task.active
+                task.finishDate = new Date().getTime()
+            }
+        })
         setTasks(taskscopy)
     };
 
